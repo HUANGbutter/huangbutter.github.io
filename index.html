@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>常用財務計算工具</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+	<script src="https://code.jquery.com/jquery-1.6.4.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+	<script>
+	
+		function checkboxSelect1()
+		{
+			if($('#checkbox-1').is(":checked"))
+			{
+				$('#checkbox-2').prop('checked', false).checkboxradio('refresh');
+			}
+			else
+			{
+				$('#checkbox-2').prop('checked', true).checkboxradio('refresh');
+			}
+			
+		}
+		function checkboxSelect3()
+		{
+			
+			if($('#checkbox-3').is(":checked"))
+			{
+				$('#checkbox-4').prop('checked', false).checkboxradio('refresh');
+			}
+			else
+			{
+				$('#checkbox-4').prop('checked', true).checkboxradio('refresh');
+			}
+			
+		}
+		function checkboxSelect5()
+		{
+			
+			if($('#checkbox-5').is(":checked"))
+			{
+				$('#checkbox-6').prop('checked', false).checkboxradio('refresh');
+			}
+			else
+			{
+				$('#checkbox-6').prop('checked', true).checkboxradio('refresh');
+			}
+			
+		}
+		function checkboxSelect7()
+		{
+			
+			if($('#checkbox-7').is(":checked"))
+			{
+				$('#checkbox-8').prop('checked', false).checkboxradio('refresh');
+			}
+			else
+			{
+				$('#checkbox-8').prop('checked', true).checkboxradio('refresh');
+			}
+			
+		}
+		
+		function checkboxSelect2()
+		{
+			if($('#checkbox-2').is(":checked"))
+			{
+				$('#checkbox-1').prop('checked', false).checkboxradio('refresh');
+			}
+			else
+			{
+				$('#checkbox-1').prop('checked', true).checkboxradio('refresh');
+			}
+						
+		}
+		function checkboxSelect4()
+		{
+			if($('#checkbox-4').is(":checked"))
+			{
+				$('#checkbox-3').prop('checked', false).checkboxradio('refresh');
+			}
+			else
+			{
+				$('#checkbox-3').prop('checked', true).checkboxradio('refresh');
+			}
+			
+		}
+		function checkboxSelect6()
+		{
+			if($('#checkbox-6').is(":checked"))
+			{
+				$('#checkbox-5').prop('checked', false).checkboxradio('refresh');
+			}
+			else
+			{
+				$('#checkbox-5').prop('checked', true).checkboxradio('refresh');
+			}
+			
+		}
+		function checkboxSelect8()
+		{
+			if($('#checkbox-8').is(":checked"))
+			{
+				$('#checkbox-7').prop('checked', false).checkboxradio('refresh');
+			}
+			else
+			{
+				$('#checkbox-7').prop('checked', true).checkboxradio('refresh');
+			}
+			
+		}
+		
+		function checkboxSet()
+		{
+			$('#checkbox-2').prop('checked', true).checkboxradio('refresh');
+			$('#checkbox-1').prop('checked', false).checkboxradio('refresh');
+		}
+		function checkboxSet2()
+		{
+			$('#checkbox-4').prop('checked', true).checkboxradio('refresh');
+			$('#checkbox-3').prop('checked', false).checkboxradio('refresh');
+		}
+		function checkboxSet3()
+		{
+			$('#checkbox-6').prop('checked', true).checkboxradio('refresh');
+			$('#checkbox-5').prop('checked', false).checkboxradio('refresh');
+		}
+		function checkboxSet4()
+		{
+			$('#checkbox-8').prop('checked', true).checkboxradio('refresh');
+			$('#checkbox-7').prop('checked', false).checkboxradio('refresh');
+		}
+				
+		function pv($rate=0, $nper=0, $pmt=0, $fv=0)
+		{
+			$rate=$("#rate").val()/1200;
+			$nper=$("#nper").val();	
+			$pmt=$("#pmt").val();	
+			$fv=$("#fv").val();
+			$type=0;
+			if($('#checkbox-1').is(":checked"))
+			{
+				$type=1;
+			}
+			else
+			{
+				$type=0;
+			}
+			
+			if($rate==0)
+			{
+				$pv=-$fv-$pmt*$nper;
+			}
+			else
+			{
+				$pv=-($pmt*(1+$rate*$type)*(1-(1/(1+$rate)**$nper))/$rate+$fv*1/(1+$rate)**$nper);	//*1或/1係為轉換成數字
+			}
+			alert($pv);
+		}
+		
+		function fv($rate=0, $nper=0, $pmt=0, $pv=0)
+		{
+			$rate=$("#rate2").val()/1200;
+			$nper=$("#nper2").val();	
+			$pmt=$("#pmt2").val();	
+			$pv=$("#pv2").val();
+			$type=0;
+			if($('#checkbox-3').is(":checked"))
+			{
+				$type=1;
+			}
+			else
+			{
+				$type=0;
+			}
+			
+			if($rate==0)
+			{
+				$fv=-$pv-$pmt*$nper;
+			}
+			else
+			{
+				$fv=-($pmt*(1+$rate*$type)*((1+$rate)**$nper-1)/$rate+$pv*(1+$rate)**$nper);	//*1或/1係為轉換成數字
+			}
+			alert($fv);
+			
+		}
+		
+		function nper($rate=0, $pmt=0, $pv=0, $fv=0)
+		{
+			$rate=$("#rate3").val()/1200;	
+			$pmt=$("#pmt3").val();	
+			$pv=$("#pv3").val();
+			$fv=$("#fv3").val();
+			$type=0;
+			if($('#checkbox-5').is(":checked"))
+			{
+				$type=1;
+			}
+			else
+			{
+				$type=0;
+			}
+			
+			if($rate==0)
+			{
+				$nper=-($fv+$pv)/$pmt;
+			}
+			else
+			{
+				$nper=Math.log((-$fv*$rate+$pmt*(1+$rate*$type))/($pv*$rate+$pmt*(1+$rate*$type)))/Math.log(1+$rate*1);	//*1或/1係為轉換成數字
+			}
+			alert($nper);
+			
+		}
+		
+		function pmt($rate=0, $nper=0, $pv=0, $fv=0)
+		{
+			$rate=$("#rate4").val()/1200;	
+			$nper=$("#nper4").val();	
+			$pv=$("#pv4").val();
+			$fv=$("#fv4").val();
+			$type=0;
+			if($('#checkbox-7').is(":checked"))
+			{
+				$type=1;
+			}
+			else
+			{
+				$type=0;
+			}
+			
+			if($rate==0)
+			{
+				$pmt=-($fv+$pv)/$nper;
+			}
+			else
+			{
+				$pmt=(-$fv-$pv*(1+$rate)**$nper)/(1+$rate*$type)/(((1+$rate)**$nper-1)/$rate);				//*1或/1係為轉換成數字
+			}
+			alert($pmt);
+	
+		}
+
+	</script>
+	
+</head>
+<body>
+
+<div data-role="page" id="home">
+
+	<div data-role="header">
+		<h1>常用財務計算工具</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<ul data-role="listview" data-theme="g">
+			<li><a href="#page1" onclick="checkboxSet();">現值(PV)</a></li>
+			<li><a href="#page2" onclick="checkboxSet2();">終值(FV)</a></li>
+			<li><a href="#page3" onclick="checkboxSet3();">期數(NPER)</a></li>
+			<li><a href="#page4" onclick="checkboxSet4();">每期金額(PMT)</a></li>
+			<li><a href="#page5" onclick="checkboxSet5();">攤銷表</a></li>
+		</ul>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<p>網站所有資料均為版權所有，非經允許請勿轉載</p>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<div data-role="page" id="page1">
+
+	<div data-role="header">
+		<h1>現值</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	
+		<label for="rate">利率:(%)</label>
+		<input type="text" name="rate" id="rate" value=""  />
+		
+		<label for="nper">期數:</label>
+		<input type="text" name="nper" id="nper" value=""  />
+		
+		<label for="pmt">每期金額:</label>
+		<input type="text" name="pmt" id="pmt" value=""  />
+		
+		<label for="fv">終值:</label>
+		<input type="text" name="fv" id="fv" value=""  />
+		
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>期初/期末:</legend>
+				<input type="checkbox" name="checkbox-1" id="checkbox-1" class="custom" onclick="checkboxSelect1();" />
+				<label for="checkbox-1">期初</label>
+				
+				<input type="checkbox" name="checkbox-2" id="checkbox-2" class="custom" onclick="checkboxSelect2();" />
+				<label for="checkbox-2">期末</label>
+			</fieldset>
+		</div>
+		
+		<a href="#" data-role="button" onclick="pv();">計算</a>
+		<a href="#home" data-role="button">返回</a>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<div data-role="page" id="page2">
+
+	<div data-role="header">
+		<h1>終值</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	
+		<label for="rate">利率:(%)</label>
+		<input type="text" name="rate" id="rate2" value=""  />
+		
+		<label for="nper">期數:</label>
+		<input type="text" name="nper" id="nper2" value=""  />
+		
+		<label for="pmt">每期金額:</label>
+		<input type="text" name="pmt" id="pmt2" value=""  />
+		
+		<label for="fv">現值:</label>
+		<input type="text" name="pv" id="pv2" value=""  />
+		
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>期初/期末:</legend>
+				<input type="checkbox" name="checkbox-3" id="checkbox-3" class="custom"  onclick="checkboxSelect3();"/>
+				<label for="checkbox-3">期初</label>
+				
+				<input type="checkbox" name="checkbox-4" id="checkbox-4" class="custom"  onclick="checkboxSelect4();"/>
+				<label for="checkbox-4">期末</label>
+			</fieldset>
+		</div>
+		
+		<a href="#" data-role="button" onclick="fv();">計算</a>
+		<a href="#home" data-role="button">返回</a>
+	</div><!-- /content -->
+
+
+</div><!-- /page -->
+
+<div data-role="page" id="page3">
+	<div data-role="header">
+		<h1>期數</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	
+		<label for="rate">利率:(%)</label>
+		<input type="text" name="rate" id="rate3" value=""  />
+		
+		<label for="pmt">每期金額:</label>
+		<input type="text" name="pmt" id="pmt3" value=""  />
+		
+		<label for="pv">現值:</label>
+		<input type="text" name="pv" id="pv3" value=""  />
+		
+		<label for="fv">終值:</label>
+		<input type="text" name="fv" id="fv3" value=""  />
+		
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>期初/期末:</legend>
+				<input type="checkbox" name="checkbox-5" id="checkbox-5" class="custom"  onclick="checkboxSelect5();"/>
+				<label for="checkbox-5">期初</label>
+				
+				<input type="checkbox" name="checkbox-6" id="checkbox-6" class="custom"  onclick="checkboxSelect6();"/>
+				<label for="checkbox-6">期末</label>
+			</fieldset>
+		</div>
+		
+		<a href="#" data-role="button" onclick="nper();">計算</a>
+		<a href="#home" data-role="button">返回</a>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<div data-role="page" id="page4">
+	<div data-role="header">
+		<h1>每期金額</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+	
+		<label for="rate">利率:(%)</label>
+		<input type="text" name="rate" id="rate4" value=""  />
+		
+		<label for="nper">期數:</label>
+		<input type="text" name="nper" id="nper4" value=""  />
+		
+		<label for="pv">現值:</label>
+		<input type="text" name="pv" id="pv4" value=""  />
+		
+		<label for="fv">終值:</label>
+		<input type="text" name="fv" id="fv4" value=""  />
+		
+		<div data-role="fieldcontain">
+			<fieldset data-role="controlgroup" data-type="horizontal">
+				<legend>期初/期末:</legend>
+				<input type="checkbox" name="checkbox-7" id="checkbox-7" class="custom"  onclick="checkboxSelect7();"/>
+				<label for="checkbox-7">期初</label>
+				
+				<input type="checkbox" name="checkbox-8" id="checkbox-8" class="custom"  onclick="checkboxSelect8();"/>
+				<label for="checkbox-8">期末</label>
+			</fieldset>
+		</div>
+		
+		<a href="#" data-role="button" onclick="pmt();">計算</a>
+		<a href="#home" data-role="button">返回</a>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+
+<div data-role="page" id="page5">
+	<div data-role="header">
+		<h1>攤銷表</h1>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<iframe width=100% height="600" src="https://docs.google.com/spreadsheets/d/14yt4LLjlFANmdvE0It7HXyZrRYaf9t-YcTVMlhz2RMk/edit?usp=sharing"></iframe>
+		<a href="#home" data-role="button">返回</a>
+	</div><!-- /content -->
+
+</div><!-- /page -->
+</body>
+</html>
