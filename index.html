@@ -136,7 +136,7 @@
 				
 		function pv($rate=0, $nper=0, $pmt=0, $fv=0)
 		{
-			$rate=$("#rate").val()/1200;
+			$rate=$("#rate").val()/100;
 			$nper=$("#nper").val();	
 			$pmt=$("#pmt").val();	
 			$fv=$("#fv").val();
@@ -163,7 +163,7 @@
 		
 		function fv($rate=0, $nper=0, $pmt=0, $pv=0)
 		{
-			$rate=$("#rate2").val()/1200;
+			$rate=$("#rate2").val()/100;
 			$nper=$("#nper2").val();	
 			$pmt=$("#pmt2").val();	
 			$pv=$("#pv2").val();
@@ -191,7 +191,7 @@
 		
 		function nper($rate=0, $pmt=0, $pv=0, $fv=0)
 		{
-			$rate=$("#rate3").val()/1200;	
+			$rate=$("#rate3").val()/100;	
 			$pmt=$("#pmt3").val();	
 			$pv=$("#pv3").val();
 			$fv=$("#fv3").val();
@@ -219,7 +219,7 @@
 		
 		function pmt($rate=0, $nper=0, $pv=0, $fv=0)
 		{
-			$rate=$("#rate4").val()/1200;	
+			$rate=$("#rate4").val()/100;	
 			$nper=$("#nper4").val();	
 			$pv=$("#pv4").val();
 			$fv=$("#fv4").val();
@@ -279,7 +279,7 @@
 
 	<div data-role="content">
 	
-		<label for="rate">利率:(%)</label>
+		<label for="rate">年利率:(%)</label>
 		<input type="text" name="rate" id="rate" value=""  />
 		
 		<label for="nper">期數:</label>
@@ -316,7 +316,7 @@
 
 	<div data-role="content">
 	
-		<label for="rate">利率:(%)</label>
+		<label for="rate">年利率:(%)</label>
 		<input type="text" name="rate" id="rate2" value=""  />
 		
 		<label for="nper">期數:</label>
@@ -353,7 +353,7 @@
 
 	<div data-role="content">
 	
-		<label for="rate">利率:(%)</label>
+		<label for="rate">年利率:(%)</label>
 		<input type="text" name="rate" id="rate3" value=""  />
 		
 		<label for="pmt">每期金額:</label>
@@ -389,7 +389,7 @@
 
 	<div data-role="content">
 	
-		<label for="rate">利率:(%)</label>
+		<label for="rate">年利率:(%)</label>
 		<input type="text" name="rate" id="rate4" value=""  />
 		
 		<label for="nper">期數:</label>
